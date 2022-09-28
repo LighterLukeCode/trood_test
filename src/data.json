@@ -22,6 +22,17 @@
     "hedge": 0
   },
   {
+    "id": 3,
+    "name": "TokenHunt.club",
+    "status": "green",
+    "type": "THC",
+    "conditions": "x2,1 years",
+    "volume": 120000,
+    "roi": 23,
+    "free": 2,
+    "hedge": 20
+  },
+  {
     "id": 4,
     "name": "Web3 P2P University",
     "status": "red",
