@@ -5,11 +5,6 @@ const Filter = ({ setFilterValue, filterValue, filterBy }) => {
     status: ["All", "green", "yellow", "red"],
     type: ["All", "TRST", "THT", "THC", "TRST"],
   };
-  console.log(filters[filterBy]);
-  const filters = {
-    status: ["All", "green", "yellow", "red"],
-    type: ["All", "TRST", "THT", "THC", "TRST"],
-  };
 
   //dataRows.filter(el => el.status === currentStatus && el.type === currentType)
   const toggleStatus = e => {

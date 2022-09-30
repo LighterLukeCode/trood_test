@@ -1,13 +1,21 @@
 import React from "react";
 import data from "../../data.json";
 import Filter from "../FilterStatus";
-const Table = () => {
+const Table = ({ sort, onSort }) => {
   const [statusFilter, setStatusFilter] = React.useState("All");
   const [typeFilter, setTypeFilter] = React.useState("All");
   const [sortField, setSortField] = React.useState("");
 
   const onClickSort = e => {
-    if (e.target.dataset.sort) setSortField(e.target.dataset.sort);
+    let name = e.target.dataset.sort;
+
+    if (name === sort && !name.includes("-")) {
+      name = "-" + name;
+    } else {
+      name = name.replace("-", "");
+    }
+
+    onSort(name);
   };
 
   return (
