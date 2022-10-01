@@ -1,28 +1,29 @@
 import React from "react";
 import data from "../../data.json";
 import Filter from "../FilterStatus";
-const Table = ({ sort, onSort }) => {
+
+const Table = ({ sort, onSort, filters, onFilter }) => {
   const [statusFilter, setStatusFilter] = React.useState("All");
   const [typeFilter, setTypeFilter] = React.useState("All");
   const [sortField, setSortField] = React.useState("");
 
-  const onClickSort = e => {
-    let name = e.target.dataset.sort;
-
-    if (name === sort && !name.includes("-")) {
-      name = "-" + name;
-    } else {
-      name = name.replace("-", "");
-    }
-
-    onSort(name);
+  const onClickFilter = e => {
+    onFilter((filters.status = e.target.reactProps.children));
+    console.log(filters);
   };
 
   return (
     <table>
-      <tr onClick={onClickSort}>
+      <tr onClick={e => onSort(e.target.dataset.sort)}>
         <th data-sort="name">
-          <Filter setFilterValue={setStatusFilter} filterValue={statusFilter} filterBy={"status"} /> Projects
+          {/* <select value={filters.status} onChange={onClickFilter}>
+            <option>All</option>
+            <option>green</option>
+            <option>yellow</option>
+            <option>red</option>
+          </select> */}
+          {/* <Filter setFilterValue={setStatusFilter} filterValue={statusFilter} filterBy={"status"} />  */}
+          Projects
         </th>
         <th data-sort="type">
           <Filter setFilterValue={setTypeFilter} filterValue={typeFilter} filterBy={"type"} /> Token type
