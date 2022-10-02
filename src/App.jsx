@@ -6,7 +6,11 @@ import data from "./data.json";
 function App() {
   const [sort, setSort] = React.useState("");
   const [filters, setFilters] = React.useState({ status: "All", type: "All" });
-  const [items, setItems] = React.useState(data);
+  const [items, setItems] = React.useState([]);
+
+  React.useEffect(() => {
+    setItems(data);
+  }, []);
 
   const onSort = column => {
     if (column === sort && !column.includes("-")) {
@@ -27,10 +31,32 @@ function App() {
     console.log(sort);
   };
 
+  const onFilter = filters => {
+    setFilters(filters);
+    console.log(filters);
+    // if (filters.status === "All" || filters.type === "All") {
+    //   return setItems(data);
+    // }
+    setItems(
+      data.filter(
+        token =>
+          (filters.status === "All" ? true : token.status === filters.status) &&
+          (filters.type === "All" ? true : token.type === filters.type)
+      )
+    );
+  };
+
   return (
     <>
       <div className="container">
-        <Table items={data} filters={filters} onFilter={setFilters} sort={sort} onSort={onSort} />
+        <Table
+          items={items}
+          filters={filters}
+          onFilter={onFilter}
+          sort={sort}
+          setFilters={setFilters}
+          onSort={onSort}
+        />
       </div>
     </>
   );
