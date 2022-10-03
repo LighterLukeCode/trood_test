@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Table = ({ onSort, filters, onFilter, items }) => {
   const onChangeFilter = e => {
@@ -51,15 +52,41 @@ const Table = ({ onSort, filters, onFilter, items }) => {
         {items.map(token => (
           <tr key={token.id}>
             <td>
-              {token.status}
-              {token.name}
+              <Link to={`/projects/${token.id}`}>
+                {token.status}
+                {token.name}
+              </Link>
             </td>
-            <td>{token.type}</td>
-            <td>{token.conditions}</td>
-            <td>{token.volume}</td>
-            <td>{token.roi}</td>
-            <td>{token.free}</td>
-            <td>{token.hedge}</td>
+            <td>
+              <Link to={`/projects/${token.id}`}>{token.type}</Link>
+            </td>
+            <td>
+              <Link to={`/projects/${token.id}`}>{token.conditions.replace("x", "x ").replace(",", ", ")}</Link>
+            </td>
+            <td>
+              <Link to={`/projects/${token.id}`}>
+                {new Intl.NumberFormat("us-Us", {
+                  style: "currency",
+                  currency: "USD",
+                  maximumFractionDigits: 0,
+                }).format(token.volume)}
+              </Link>
+            </td>
+            <td>
+              <Link to={`/projects/${token.id}`}>
+                {token.roi}
+                {` %`}
+              </Link>
+            </td>
+            <td>
+              <Link to={`/projects/${token.id}`}>{token.free}</Link>
+            </td>
+            <td>
+              <Link to={`/projects/${token.id}`}>
+                {token.hedge}
+                {` %`}
+              </Link>
+            </td>
             <td>
               <button>buy</button>
             </td>

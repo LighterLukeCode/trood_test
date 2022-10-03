@@ -2,6 +2,8 @@ import React from "react";
 import Table from "./components/table";
 import "./scss/app.scss";
 import data from "./data.json";
+import { Routes, Route } from "react-router-dom";
+import Project from "./components/Project";
 
 function App() {
   const [sort, setSort] = React.useState("");
@@ -33,10 +35,7 @@ function App() {
 
   const onFilter = filters => {
     setFilters(filters);
-    console.log(filters);
-    // if (filters.status === "All" || filters.type === "All") {
-    //   return setItems(data);
-    // }
+
     setItems(
       data.filter(
         token =>
@@ -49,14 +48,22 @@ function App() {
   return (
     <>
       <div className="container">
-        <Table
-          items={items}
-          filters={filters}
-          onFilter={onFilter}
-          sort={sort}
-          setFilters={setFilters}
-          onSort={onSort}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Table
+                items={items}
+                filters={filters}
+                onFilter={onFilter}
+                sort={sort}
+                setFilters={setFilters}
+                onSort={onSort}
+              />
+            }
+          />
+          <Route path="/projects/:id" element={<Project items={data} />} />
+        </Routes>
       </div>
     </>
   );
