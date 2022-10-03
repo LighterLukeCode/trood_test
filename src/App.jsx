@@ -45,6 +45,10 @@ function App() {
     );
   };
 
+  const onBuy = id => {
+    setItems(data.filter(token => token.id === Number(id)));
+  };
+
   return (
     <>
       <div className="container">
@@ -59,6 +63,7 @@ function App() {
                 sort={sort}
                 setFilters={setFilters}
                 onSort={onSort}
+                onBuy={onBuy}
               />
             }
           />

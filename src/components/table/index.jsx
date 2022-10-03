@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Table = ({ onSort, filters, onFilter, items }) => {
+const Table = ({ onSort, filters, onFilter, items, onBuy }) => {
   const onChangeFilter = e => {
     filters[e.target.dataset.filter] = e.target.value;
 
     onFilter(filters);
+  };
+
+  const BuyToken = e => {
+    const id = e.target.value;
+    onBuy(id);
   };
 
   return (
@@ -88,7 +93,9 @@ const Table = ({ onSort, filters, onFilter, items }) => {
               </Link>
             </td>
             <td>
-              <button>buy</button>
+              <button onClick={e => BuyToken(e)} value={token.id}>
+                buy
+              </button>
             </td>
           </tr>
         ))}
