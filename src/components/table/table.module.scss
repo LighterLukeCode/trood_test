@@ -1,0 +1,61 @@
+.table {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  width: 100%;
+  text-align: left;
+  border-spacing: 0;
+}
+
+.tbody .td .tr {
+  font-size: 20px;
+}
+.tr {
+  margin-bottom: 50px;
+}
+
+.td {
+  padding: 15px 0px;
+
+  border-bottom: 10px solid #ffffff;
+}
+
+.thead .th {
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+.button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  color: blueviolet;
+  &:hover {
+    background-color: blueviolet;
+    color: #ffffff;
+    transition: all 0.3s linear;
+    border: 0;
+  }
+}
+
+.sphere {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 500%;
+
+  display: inline-block;
+  margin: 5%;
+}
+
+.green {
+  background-color: green;
+}
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
