@@ -15,16 +15,11 @@ const Table = ({ onSort, filters, onFilter, items, onBuy }) => {
   };
 
   const backGround = token => {
-    let backColor;
     if (token.status === "green") {
-      backColor = "rgba(187, 247, 193, 0.8)";
-      console.log(backColor);
-      return backColor;
+      return "rgba(187, 247, 193, 0.8)";
     } else if (token.status === "yellow") {
-      backColor = "rgba(247, 246, 187, 0.8)";
-      return backColor;
-    } else backColor = "rgba(247, 187, 193, 0.8)";
-    return backColor;
+      return "rgba(247, 246, 187, 0.8)";
+    } else return "rgba(247, 187, 193, 0.8)";
   };
 
   return (
