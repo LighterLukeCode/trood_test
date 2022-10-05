@@ -1,20 +1,32 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./table.module.scss";
+import { Item } from "../../interfaces/Item";
 
-const Table = ({ onSort, filters, onFilter, items, onBuy }) => {
-  const onChangeFilter = e => {
-    filters[e.target.dataset.filter] = e.target.value;
+export interface Filters {
+  [key: string]: string;
+}
+interface Props {
+  onSort: (param: string) => void;
+  filters: Filters;
+  onFilter: (param: Filters) => void;
+  onBuy: (param: string) => void;
+  items: Item[];
+}
+const Table = ({ onSort, filters, onFilter, items, onBuy }: Props) => {
+  const onChangeFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (e.target.dataset.filter) {
+      filters[e.target.dataset.filter] = e.target.value;
+    }
 
     onFilter(filters);
   };
 
-  const BuyToken = e => {
-    const id = e.target.value;
+  const BuyToken = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const id = (e.target as HTMLButtonElement).value;
     onBuy(id);
   };
 
-  const backGround = token => {
+  const backGround = (token: Item) => {
     if (token.status === "green") {
       return "rgba(187, 247, 193, 0.8)";
     } else if (token.status === "yellow") {
